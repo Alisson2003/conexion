@@ -34,6 +34,7 @@ public class login {
                     frame.setPreferredSize(new Dimension(800, 600));
                     frame.pack();
                     frame.setVisible(true);
+
                 } catch (SQLException e) {
                     System.out.println("Error al conectar: " + e.getMessage());
                 }
