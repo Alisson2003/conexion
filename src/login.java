@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class login {
-    public Container login;
     public JPanel mainPanel;
     private JTextField user;
     private JPasswordField passwor;
@@ -23,29 +22,20 @@ public class login {
             public void actionPerformed(ActionEvent event) {
                 String url = "jdbc:mysql://localhost:3306/estudiantes2024A";
                 String username = "root";
-                String password = "123456";
+                String password = "1234";
 
-                try{
-                    String usuario = user.getText();
-                    String pass = passwor.getText();
-                    Connection con = DriverManager.getConnection(url, username, password);
-                    System.out.println("Conectado con exito a la base de datos");
-                    Statement stmt = con.createStatement();
-                    //String query = "SELECT * FROM estudiantes where cedula = "+ usuario ;
-                    String query = "SELECT * FROM estudiantes where cedula = "+ pass + usuario;
-
-
-                    ResultSet rs = stmt.executeQuery(query);
-                    while(rs.next()){
-                        System.out.println(rs.getString("cedula"));
-                        System.out.println(rs.getString("nombre"));
-                        System.out.println(rs.getString("b1"));
-                        System.out.println(rs.getString("b2"));
-                    }
-                    con.close();
-
+                try {
+                    Connection conn = DriverManager.getConnection(url, username, password);
+                    System.out.println("Conexión exitosa a la base de datos.");
+                    JFrame frame = new JFrame("Bienvenida");
+                    frame.setContentPane(new Formulario().mainPanel2);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setSize(800,600);
+                    frame.setPreferredSize(new Dimension(800, 600));
+                    frame.pack();
+                    frame.setVisible(true);
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("Error al conectar: " + e.getMessage());
                 }
             }
         });
