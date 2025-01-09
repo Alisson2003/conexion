@@ -15,6 +15,7 @@ public class Formulario {
     private JTable table1;
 
     public Formulario() {
+
         String url = "jdbc:mysql://localhost:3306/estudiantes2024A";
         String username = "root";
         String password = "1234";
@@ -23,6 +24,7 @@ public class Formulario {
         model.addColumn("Nombre");
         model.addColumn("B1");
         model.addColumn("B2");
+
         try{
             Connection con = DriverManager.getConnection(url, username, password);
             String query = "SELECT * FROM estudiantes";

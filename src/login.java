@@ -17,6 +17,7 @@ public class login {
     private JButton ingresarButton;
 
     public login() {
+
         ingresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
